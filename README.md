@@ -1,11 +1,16 @@
-# [Título del trabajo]
+# Biblio_etsidi
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
+* El proyecto consiste en un programa que permita gestionar cualquier biblioteca, incorporando las funciones elementales propias de este ámbito.
 
 ## Integrantes del equipo
 
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+* Lucía Marcos
+* Nerea Rodriguez
+* Roberto Roncal España Rq2021
 
 ## Objetivos del trabajo
 
-[Lista de los objetivos que se persiguen con el trabajo propuesto.]
+* Implementación de una herramienta útil de gestión de una biblioteca personal
+* Permitir al usuario el etiquetado y registro de entradas
+* Permitir al usuario la consulta y filtrado de archivos
+* Permitir al usuario la modificación y borrado de archivos
