@@ -49,7 +49,27 @@ int main(){
 					printf("                                        *   1.BUSQUEDA               *\n");
 					printf("                                        *   2.VOLVER AL MENU INICIO  *\n");
 					printf("                                        ******************************\n");
-					break;
+					
+					
+									
+											do{
+												scanf("%d",&opcion);
+													if(opcion<1||opcion>2)
+														printf("OPCION INCORRECTA. VUELVA A INTENTARLO\n");			
+											}while(opcion<1||opcion>2);
+											
+											switch(opcion){
+												case 1:
+													system("cls");
+													printf("INDIQUE LOS PARAMETROS DE LA BUSQUEDA");// BUSQUEDAAAAAAAAAAAAAAAAAAAAAAA
+												break;
+												case 2:
+													system("cls");	
+													printf("aqui deberia volver al menu de inicio directamente");//VOLVEERRRRRRRRRRRRRRRRRR
+												break;
+											}
+					
+					break;				
 			case 2:
 					system("cls");
 					printf("HA SELECCIONADO EDITAR UN DOCUMENTO");
