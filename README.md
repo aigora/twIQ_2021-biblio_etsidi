@@ -5,7 +5,7 @@
 ## Integrantes del equipo
 
 * Lucía Marcos
-* Nerea Rodriguez
+* Nerea Rodriguez López (nerearodriguezlopez)
 * Roberto Roncal España Rq2021
 
 ## Objetivos del trabajo
