@@ -24,7 +24,7 @@ int main(){
 	int entradas;//numero de entradas cada vez que se ingresan unos datos
 	int i;	
 	
-	do{
+	while(1){
 		
 		printf("MENU INICIO");
 		printf("\n");
@@ -59,25 +59,28 @@ int main(){
 					fentrada = fopen("entrada.txt","r");
 					if(fentrada==NULL){
 					printf("Error: el fichero no se ha encontrado");
+					return 0;
 					}
 					while(fscanf(fentrada,"%s %d",libro[i].titulo,&libro[i].anio)!=EOF){
 						printf("%s %d\n", libro[i].titulo,libro[i].anio);
 						i++;
 					}
 					fclose(fentrada);
-					printf("Pulse 1 para volver al menu principal\n");
-					scanf("%d",&volver);
+					getchar();
+					printf("\nPulse una tecla para volver al menu principal\n");
+					getchar();
 					system("cls");
 					break;
 				}
 								
-				case 2:{
+				case 2:{//se abre fichero nueva_entrada en modo escritura
 					system("cls");
 					printf("MENU INICIO/NUEVA ENTRADA\n");
 					
 					fnueva_entrada = fopen("nueva_entrada.txt","w");
 						if(fnueva_entrada == NULL){ 
-						printf("Error abriendo el fichero para escritura"); 						
+						printf("Error abriendo el fichero para escritura"); 
+						return 0;						
 						}
 						
 					printf("Cuantas entradas va a realizar?\n");
@@ -89,16 +92,30 @@ int main(){
 					}				
 					fclose(fnueva_entrada);
 					
-					printf("Pulse 1 para volver al menu principal\n");
-					scanf("%d",&volver);
+					getchar();
+					printf("\nPulse una tecla para volver al menu principal\n");
+					getchar();
 					system("cls");
 					break;
-				}					
+				}	
+				case 3:	
+					system("cls");
+					//getchar();
+					printf("MENU INICIO/SALIR DEL PROGRAMA\n");	
+					printf("HASTA PRONTO!\n");			
+					//printf("Pulse una tecla para finalizar\n");
+					//getchar();
 					
+				return 0;		
 			}
 			
-}while(volver=1);
+	}
 }
+		
+		
+		
+		
+		
 					
 					
 /*
