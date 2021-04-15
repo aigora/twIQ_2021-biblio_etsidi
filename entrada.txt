@@ -1,5 +1,11 @@
-matematicas 2001
-ciencias 2004
-Biologia 1998
-Bioquimica 2000
+calculo ciencias 2001
+quimica ciencias 2004
+fisica ciencias 1998
+exorcista terror 2000
+resplandor terror 1980
+carrie terror 1978
+grecia historia 2001
+roma historia 1976
+geometria ciencias 1998
+
 

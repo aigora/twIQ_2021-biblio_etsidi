@@ -6,7 +6,7 @@ struct listado{
 	
 	char titulo[50];
 	//char autor[50];
-	//char genero[30];
+	char genero[30];
 	//char editorial[30];
 	//int npaginas;
 	//int edicion;
@@ -19,10 +19,11 @@ int main(){
 		
 	struct listado libro[N];
 	
-	int volver;
+	int volver, parametro,narchivos, encontrados, resultado, anio, lineas=0;
 	int opcionmenuprincipal; 
 	int entradas;//numero de entradas cada vez que se ingresan unos datos
 	int i;	
+	char genero[30];
 	
 	while(1){
 		
@@ -52,7 +53,7 @@ int main(){
 				
 			switch(opcionmenuprincipal){
 				
-				case 1:{//Se abre fichero en modo lectura
+				case 1:{//Se abre fichero en modo lectura CONSULTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa
 					
 					system("cls");
 					printf("MENU INICIO/CONSULTA\n");
@@ -61,17 +62,75 @@ int main(){
 					printf("Error: el fichero no se ha encontrado");
 					return 0;
 					}
-					while(fscanf(fentrada,"%s %d",libro[i].titulo,&libro[i].anio)!=EOF){
-						printf("%s %d\n", libro[i].titulo,libro[i].anio);
+					i=0;
+					lineas=0;
+					while(fscanf(fentrada,"%s %s %d",libro[i].titulo,libro[i].genero, &libro[i].anio)!=EOF){
+						printf("%s %s %d\n", libro[i].titulo,libro[i].genero,libro[i].anio);
 						i++;
+						lineas++;
 					}
 					fclose(fentrada);
-					getchar();
+					
+					printf("Numero total de archivos encontrados: %d\n",lineas);					
+					
+						printf("\nIntroduzca la opcion de busqueda para filtrado de datos:\n");
+						printf("Opcion 1: buscar por genero\n");
+						printf("Opcion 2: buscar por anio de lanzamiento\n");					
+						scanf("%d",&parametro);
+					
+						switch(parametro){
+							
+								case 1:{			                       ///busqueda por genero				
+								printf("Introduzca el genero: ");
+								fflush(stdin);
+								gets(genero);
+								printf("\n");						
+								encontrados=0;
+								for(i=0;i<lineas;i++){		
+								    						
+									resultado=strcmp(genero, libro[i].genero);
+									if(resultado==0){								
+										printf("%s %s %d\n", libro[i].titulo,libro[i].genero,libro[i].anio);
+										encontrados++;
+									}
+								}									
+									if(encontrados==0)
+										printf("No existen coincidencias con tu busqueda\n");
+									else
+										printf("\nSe han encontrado %d coincidencias\n", encontrados);							
+						
+								break;
+								}
+							
+								case 2:{							///busqueda por aniooooooooooooooooooooooo
+															
+									printf("Introduzca anio de lanzamiento: ");
+									scanf("%d",&anio);			
+										encontrados=0;
+										for(i=0;i<lineas;i++){
+											if(anio==libro[i].anio){
+												printf("%s %s %d\n", libro[i].titulo,libro[i].genero,libro[i].anio);
+												encontrados++;
+											}											
+										}
+											if(encontrados==0)
+												printf("\nNo existen coincidencias con tu busqueda\n");
+											else
+												printf("\nSe han encontrado %d coincidencias\n", encontrados);		
+											getchar();	
+								break;
+								}
+						}  //SALIDA SWITCH BUSQUEDA									
+					
+					//getchar();
 					printf("\nPulse una tecla para volver al menu principal\n");
 					getchar();
 					system("cls");
 					break;
-				}
+				}//CIERRA OPCION CONSULTA
+				
+				
+				
 								
 				case 2:{//se abre fichero nueva_entrada en modo escritura
 					system("cls");
@@ -86,10 +145,10 @@ int main(){
 					printf("Cuantas entradas va a realizar?\n");
 					scanf("%d",&entradas);					
 					for(i=0;i<entradas;i++){						
-						printf("Introduzca el titulo y el anio de la obra:\n");
-						scanf("%s %d",libro[i].titulo,&libro[i].anio);
-						fprintf(fnueva_entrada,"%s %d\n",libro[i].titulo,libro[i].anio);
-					}				
+						printf("Introduzca el titulo, genero y anio de la obra:\n");
+						scanf("%s %s %d",libro[i].titulo, libro[i].genero,&libro[i].anio);
+						fprintf(fnueva_entrada,"%s %s %d\n",libro[i].titulo, libro[i].genero,libro[i].anio);			
+					}
 					fclose(fnueva_entrada);
 					
 					getchar();
@@ -107,15 +166,15 @@ int main(){
 					//getchar();
 					
 				return 0;		
-			}
+			}//switch menu principal
 			
-	}
-}
+	}//while
+}//main
 		
 		
 		
 		
-		
+	
 					
 					
 /*
