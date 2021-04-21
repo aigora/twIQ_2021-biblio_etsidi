@@ -11,6 +11,5 @@
 ## Objetivos del trabajo
 
 * Implementación de una herramienta útil de gestión de una biblioteca personal
-* Permitir al usuario el etiquetado y registro de entradas
 * Permitir al usuario la consulta y filtrado de archivos
-* Permitir al usuario la modificación y borrado de archivos
+* Permitir al usuario la incorporacion de nuevos archivos
