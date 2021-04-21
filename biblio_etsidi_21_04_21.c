@@ -24,10 +24,9 @@ int main(){
 	int entradas;//numero de entradas cada vez que se ingresan unos datos
 	int i;	
 	char genero[30];
-	char usuario[15], usuario1[3];
+	char usuario[15], usuario1[10];
 	int clave, clave1;
 	
-	while(1){
 
 		printf("\n");
 		printf("\n");	
@@ -42,8 +41,8 @@ int main(){
 		printf("\n");
 		
 		fclave = fopen("clave.txt","r");
-		if(fentrada==NULL){
-		printf("Error en la apertura de fichero\n");
+		if(fclave==NULL){
+			printf("Error en la apertura de fichero\n");
 		}
 		fscanf(fclave,"%s %d", usuario1, &clave1);		
 		fclose(fclave);
@@ -62,8 +61,12 @@ int main(){
 			getchar();
 			printf("Pulse una tecla para continuar");
 			getchar();
-		system("cls");		
-		
+			
+			
+			
+    while(1){	
+    
+		system("cls");				
 		printf("MENU INICIO");
 		printf("\n");
 		printf("\n");	
@@ -94,6 +97,8 @@ int main(){
 					
 					system("cls");
 					printf("MENU INICIO/CONSULTA\n");
+
+
 					fentrada = fopen("entrada.txt","r");
 					if(fentrada==NULL){
 					printf("Error: el fichero no se ha encontrado");
@@ -102,9 +107,9 @@ int main(){
 					i=0;
 					lineas=0;
 					while(fscanf(fentrada,"%s %s %d",libro[i].titulo,libro[i].genero, &libro[i].anio)!=EOF){
-						printf("%s %s %d\n", libro[i].titulo,libro[i].genero,libro[i].anio);
-						i++;
-						lineas++;
+					printf("%s %s %d\n", libro[i].titulo,libro[i].genero,libro[i].anio);
+					i++;
+					lineas++;
 					}
 					fclose(fentrada);
 					
