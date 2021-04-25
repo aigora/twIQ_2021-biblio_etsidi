@@ -1,11 +1,5 @@
-calculo ciencias 2001
-quimica ciencias 2004
-fisica ciencias 1998
-exorcista terror 2000
-resplandor terror 1980
-carrie terror 1978
-grecia historia 2001
-roma historia 1976
-geometria ciencias 1998
-
-
+matematicas ciencias 1549
+colmena novela 2001
+isla novela 2009
+serotonina novela 1998
+plataforma novela 1996
