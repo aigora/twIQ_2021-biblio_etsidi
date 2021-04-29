@@ -1,5 +1,9 @@
 matematicas ciencias 1549
-colmena novela 2001
-isla novela 2009
+La_colmena novela 2001
+Posibilidad_de_una_isla novela 2009
 serotonina novela 1998
 plataforma novela 1996
+El_mapa_y_el_territorio novela 2004
+La_hoguera_de_las_vanidades novela 1978
+Trainspotting novela 2000
+Ensayos_y_cronicas novela 1980
