@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<string.h>
-#define N 100
+#define N 500
 
 void banner(){
 	
@@ -13,30 +13,31 @@ void banner(){
 		printf("			------********-------**-------******-------****----**-**-------****-------\n");
 
 }
- 
 struct listado{
 	   
 	char titulo[50];
-	//char autor[50];
+	char autor[50];
 	char genero[30];
-	//char editorial[30];
-	//int npaginas;
-	//int edicion;
+	char editorial[30];
+	int npaginas;
+	int edicion;
 	int anio;
 };
-
 int main(){
 	system("COLOR CF"); 	
 	FILE * fentrada, * fclave;
 		
-	struct listado libro[N];
+	struct listado libro[N];	
 	
-	int parametro, encontrados, resultado, anio, lineas;
+	int parametro, encontrados, resultado, lineas;
 	int opcionmenuprincipal; 
+	char titulo[50];
+	char autor[50];
 	char genero[30];
+	char editorial[30];
+	int npaginas, edicion, anio;
 	char usuario[15], usuario1[10];
-	int i, clave, clave1;
-	
+	int i, clave, clave1;	
 
 		printf("\n");
 		printf("\n");
@@ -60,7 +61,7 @@ int main(){
 		}
 		fscanf(fclave,"%s %d", usuario1, &clave1);		
 		fclose(fclave);
-		
+				
 		do{	
 			scanf("%s %d",usuario, &clave);		
 			if(usuario1!=usuario && clave1!=clave){
@@ -102,11 +103,10 @@ int main(){
 				if(opcionmenuprincipal<1||opcionmenuprincipal>3)
 				printf("OPCION INCORRECTA. VUELVA A INTENTARLO\n");			
 			}while(opcionmenuprincipal<1||opcionmenuprincipal>3);			
-			
 				
 			switch(opcionmenuprincipal){
 				
-				case 1:{//Se abre fichero en modo lectura CONSULTA
+				case 1:{//CONSULTA
 					
 					system("cls");
 					printf("MENU INICIO/CONSULTA\n");
@@ -119,8 +119,8 @@ int main(){
 					}
 					i=0;
 					lineas=0;
-					while(fscanf(fentrada,"%s %s %d",libro[i].titulo,libro[i].genero, &libro[i].anio)!=EOF){
-					printf("%s %s %d\n", libro[i].titulo,libro[i].genero,libro[i].anio);
+					while(fscanf(fentrada,"%s %s %s %s %d %d %d",libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, &libro[i].npaginas, &libro[i].edicion, &libro[i].anio)!=EOF){
+					printf("%s %s %s %s %d %d %d\n", libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, libro[i].npaginas, libro[i].edicion, libro[i].anio);
 					i++;
 					lineas++;
 					}
@@ -129,23 +129,27 @@ int main(){
 					printf("\nNumero total de archivos encontrados: %d\n",lineas);					
 					
 						printf("\nIntroduzca la opcion de busqueda para filtrado de datos:\n");
-						printf("Opcion 1: buscar por genero\n");
-						printf("Opcion 2: buscar por anio de lanzamiento\n");					
+						//printf("Nota: la primera letra en mayuscula y uniendo las palabras con _");
+						printf("\nOpcion 1: buscar por titulo\n");
+						printf("Opcion 2: buscar por autor\n");
+						printf("Opcion 3: buscar por genero\n");
+						printf("Opcion 4: buscar por editorial\n");
+						printf("Opcion 5: buscar por anio\n");					
 						scanf("%d",&parametro);
 					
 						switch(parametro){
 							
-								case 1:{			                       ///busqueda por genero				
-								printf("Introduzca el genero: ");
+								case 1:{			                       				
+								printf("Introduzca el titulo: ");
 								fflush(stdin);
-								gets(genero);
+								gets(titulo);
 								printf("\n");
 								system("cls");						
 								encontrados=0;
 								for(i=0;i<lineas;i++){									    						
-									resultado=strcmp(genero, libro[i].genero);
+									resultado=strcmp(titulo, libro[i].titulo);
 									if(resultado==0){								
-										printf("%s %s %d\n", libro[i].titulo,libro[i].genero,libro[i].anio);
+										printf("%s %s %s %s %d %d %d\n", libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, libro[i].npaginas, libro[i].edicion, libro[i].anio);
 										encontrados++;
 									}
 								}									
@@ -156,8 +160,70 @@ int main(){
 						
 								break;
 								}
-							
-								case 2:{							///busqueda por aniooooooooooooooooooooooo
+								case 2:{			                       				
+								printf("Introduzca el autor: ");
+								fflush(stdin);
+								gets(autor);
+								printf("\n");
+								system("cls");						
+								encontrados=0;
+								for(i=0;i<lineas;i++){									    						
+									resultado=strcmp(autor, libro[i].autor);
+									if(resultado==0){								
+										printf("%s %s %s %s %d %d %d\n", libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, libro[i].npaginas, libro[i].edicion, libro[i].anio);
+										encontrados++;
+									}
+								}									
+									if(encontrados==0)
+										printf("No existen coincidencias con tu busqueda\n");
+									else
+										printf("\nSe han encontrado %d coincidencias\n", encontrados);							
+						
+								break;
+								}
+								case 3:{			                       				
+								printf("Introduzca el genero: ");
+								fflush(stdin);
+								gets(genero);
+								printf("\n");
+								system("cls");						
+								encontrados=0;
+								for(i=0;i<lineas;i++){									    						
+									resultado=strcmp(genero, libro[i].genero);
+									if(resultado==0){								
+										printf("%s %s %s %s %d %d %d\n", libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, libro[i].npaginas, libro[i].edicion, libro[i].anio);
+										encontrados++;
+									}
+								}									
+									if(encontrados==0)
+										printf("No existen coincidencias con tu busqueda\n");
+									else
+										printf("\nSe han encontrado %d coincidencias\n", encontrados);							
+						
+								break;
+								}
+								case 4:{			                       				
+								printf("Introduzca la editorial: ");
+								fflush(stdin);
+								gets(editorial);
+								printf("\n");
+								system("cls");						
+								encontrados=0;
+								for(i=0;i<lineas;i++){									    						
+									resultado=strcmp(editorial, libro[i].editorial);
+									if(resultado==0){								
+										printf("%s %s %s %s %d %d %d\n", libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, libro[i].npaginas, libro[i].edicion, libro[i].anio);
+										encontrados++;
+									}
+								}									
+									if(encontrados==0)
+										printf("No existen coincidencias con tu busqueda\n");
+									else
+										printf("\nSe han encontrado %d coincidencias\n", encontrados);							
+						
+								break;
+								}
+								case 5:{						
 															
 									printf("Introduzca anio de lanzamiento: ");
 									scanf("%d",&anio);
@@ -165,7 +231,7 @@ int main(){
 										encontrados=0;
 										for(i=0;i<lineas;i++){
 											if(anio==libro[i].anio){
-												printf("%s %s %d\n", libro[i].titulo,libro[i].genero,libro[i].anio);
+												printf("%s %s %s %s %d %d %d\n", libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, libro[i].npaginas, libro[i].edicion, libro[i].anio);
 												encontrados++;
 											}											
 										}
@@ -184,9 +250,7 @@ int main(){
 					system("cls");
 					break;
 				}//CIERRA OPCION CONSULTA				
-				
-								
-				case 2:{//se abre fichero nueva_entrada en modo escritura
+				case 2:{//NUEVA ENTRADA
 					system("cls");
 					printf("MENU INICIO/NUEVA ENTRADA\n");
 					
@@ -196,10 +260,11 @@ int main(){
 						return 0;						
 						}
 																
-						printf("Introduzca el titulo, genero y anio de la obra:\n");
-						scanf("%s %s %d",libro[i].titulo, libro[i].genero,&libro[i].anio);
+						printf("Introduzca el titulo, autor, genero, editorial, numero de paginas, edicion y anio de la obra:\n");
+						fflush(stdin);
+						scanf("%s %s %s %s %d %d %d",libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, &libro[i].npaginas, &libro[i].edicion, &libro[i].anio);
 					for(i=0;i<lineas+1;i++){
-						fprintf(fentrada,"%s %s %d\n",libro[i].titulo, libro[i].genero,libro[i].anio);			
+						fprintf(fentrada,"%s %s %s %s %d %d %d\n",libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, libro[i].npaginas, libro[i].edicion, libro[i].anio);			
 					}
 					fclose(fentrada);
 					
@@ -209,7 +274,7 @@ int main(){
 					system("cls");
 					break;
 				}	
-				case 3:	
+				case 3:	//SALIR DEL PROGRAMA
 					system("cls");
 					//getchar();
 					printf("MENU INICIO/SALIR DEL PROGRAMA\n");	
