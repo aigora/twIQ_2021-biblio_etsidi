@@ -2,8 +2,20 @@
 #include<string.h>
 #define N 100
 
-struct listado{
+void banner(){
 	
+		printf("			------********---**********----*******-----****----**-**-------****-------\n");
+		printf("			------**-------------**------**-------------**-----**----**-----**--------\n");	
+		printf("			------**-------------**------**-------------**-----**-----**----**--------\n");
+		printf("			------********-------**--------**--**-------**-----**-----**----**--------\n");
+		printf("			------**-------------**--------------**-----**-----**-----**----**--------\n");                                  
+		printf("			------**-------------**--------------**-----**-----**----**-----**--------\n");
+		printf("			------********-------**-------******-------****----**-**-------****-------\n");
+
+}
+ 
+struct listado{
+	   
 	char titulo[50];
 	//char autor[50];
 	char genero[30];
@@ -27,17 +39,21 @@ int main(){
 	
 
 		printf("\n");
+		printf("\n");
 		printf("\n");	
 		printf("\n");
 		printf("\n");
-		printf("\n");                                  
+		printf("\n"); 
+		banner();                                 
 		printf("\n");
 		printf("\n");
 		printf("\n");	
 		printf("                               Introduzca nombre de usuario y clave para iniciar sesion\n");
 		printf("\n");
 		printf("\n");
-		
+		printf("\n");
+		printf("\n");
+		printf("\n");
 		fclave = fopen("clave.txt","r");
 		if(fclave==NULL){
 			printf("Error en la apertura de fichero\n");
@@ -90,7 +106,7 @@ int main(){
 				
 			switch(opcionmenuprincipal){
 				
-				case 1:{//Se abre fichero en modo lectura CONSULTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa
+				case 1:{//Se abre fichero en modo lectura CONSULTA
 					
 					system("cls");
 					printf("MENU INICIO/CONSULTA\n");
@@ -110,7 +126,7 @@ int main(){
 					}
 					fclose(fentrada);
 					
-					printf("Numero total de archivos encontrados: %d\n",lineas);					
+					printf("\nNumero total de archivos encontrados: %d\n",lineas);					
 					
 						printf("\nIntroduzca la opcion de busqueda para filtrado de datos:\n");
 						printf("Opcion 1: buscar por genero\n");
@@ -197,7 +213,8 @@ int main(){
 					system("cls");
 					//getchar();
 					printf("MENU INICIO/SALIR DEL PROGRAMA\n");	
-					printf("HASTA PRONTO!\n");			
+					printf("HASTA PRONTO!\n");	
+					banner();   		
 					//printf("Pulse una tecla para finalizar\n");
 					//getchar();
 					
@@ -209,120 +226,7 @@ int main(){
 }//main
 		
 		
-		
-		
-	
-					
-					
-/*
-					
-					
-					switch(opcionedicion){						
-										
-						case 1:{		
-								                                           //////////////EDICION/  NUEVA ENTRADAAAAAAAAAAAAAAAAAAAAAAAAAa
-								printf("MENU EDICION/NUEVA ENTRADA\n");
-								for(i=0;i<N;i++){
-									
-									printf("\nIntroduzca el titulo de la obra:\n");
-									gets(libro[i].titulo);
-									fflush(stdin);
-									printf("Introduzca el autor de la obra:\n");
-									gets(libro[i].autor);
-									fflush(stdin);
-									printf("Introduzca el genero de la obra:\n");
-									gets(libro[i].genero);
-									fflush(stdin);
-									printf("Introduzca la editorial:\n");
-									gets(libro[i].editorial);
-									fflush(stdin);
-									printf("Introduzca el numero de paginas:\n");
-									scanf("%d",&libro[i].npaginas);
-									fflush(stdin);
-									printf("Introduzca el numero de edicion:\n");
-									scanf("%d",&libro[i].edicion);
-									fflush(stdin);
-									printf("Introduzca el anio de lanzamiento de la obra:\n");
-									scanf("%d",&libro[i].anio);
-									fflush(stdin);
-		
-									printf("\n");
-									printf("%d.TITULO: %s\n",i+1, libro[i].titulo);
-									printf("AUTOR: %s\n", libro[i].autor);
-									printf("GENERO: %s\n", libro[i].genero);
-									printf("EDITORIAL: %s\n", libro[i].editorial);									
-									printf("NUMERO DE PAGINAS: %d\n", libro[i].npaginas);
-									printf("EDICION: %d\n", libro[i].edicion);									
-									printf("ANIO: %d\n", libro[i].anio);
-									
-								do{
-									printf("\n");
-									printf("Marque la opcion:\n");
-									printf("\n");
-									printf("1 - Realizar otra entrada\n");
-									printf("2 - Ver listado de los documentos introducidos\n");
-									printf("3 - Volver al menu inicio\n");
-								
-									scanf("%d", &opcionfinalmenuentrada);
-									fflush(stdin);
-		
-									switch(opcionfinalmenuentrada){			
-											case 1: 
-											break;	
-											case 2:{
-												
-												do{
-														printf("\nIndique el numero de documentos que quiere ver\n");
-														scanf("%d",&entradas);
-													    	if(entradas>i+1 || entradas<=0){
-													    	printf("Numero incorrecto");
-															}
-														}while(entradas>i+1 || entradas<=0);							
-												
-															
-													system("cls");
-													printf("\n");
-													printf("LISTADO ENTRADAS:\n");//MUESTRA LISTADO DE ENTRADAS
-													printf("\n");
-													
-													for(i=0;i<entradas;i++){
-													printf("%d. %s %s %s %s %d paginas edicion %d %d\n",i+1,libro[i].titulo, libro[i].autor, libro[i].genero, libro[i].editorial, libro[i].npaginas, libro[i].edicion, libro[i].anio);	
-													}
-																									
-												}
-												break;// AQUI DEBE VOLVER AL MENU PRINCIPAL. NO HAY OTRA OPCION
-											
-											case 3: 
-												system("cls"); //VOLVER A MENU INICIALLLLLLLLLLLLLLLL
-												break;
-									}																
-								 }while(opcionfinalmenuentrada==2);
-								}										
-															
-															
-						break;
-						} //CIERRA SWITCH 1 NUEVA ENTRADA
-					//	case 2:MODIFICAR DATOS 
-					//	case 3:ELIMINAR UN DOCUMENTO
-						case 4:
-							system("cls");
-						break;
-					}//CIERRA SWITCH MENU EDICIOOOOOOO													
-								
-				break;//cierra CASE 2 EDICIOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-				case 3: //SALIR DEL PROGRAMAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-					printf("HAVE A NICE DAY\n");
-				return 0;
-			}//CIERRA SWITCH MENU PRINCIPAL
-		
-	}while(opcionconsulta==2 || opcionedicion==4);
-	
-	*/	
 
-			
-						
-
-		
 	
 		
 
