@@ -12,8 +12,11 @@ struct libro{
 	int edicion;
 	int anio;
 };
-
-void banner();
+//PROTOTIPOS de funciones
+void Banner();
+void MenuClave(); 
+void MenuInicio();
+void MenuFiltrado(struct libro lista[], int lineas);
 void ConsultaTitulo(struct libro lista[], int lineas);
 void ConsultaAutor(struct libro lista[], int lineas);
 void ConsultaGenero(struct libro lista[], int lineas);
@@ -42,16 +45,9 @@ int main(){
 		printf("\n");
 		printf("\n");
 		printf("\n"); 
-		banner();                                 
-		printf("\n");
-		printf("\n");
-		printf("\n");	
-		printf("                               Introduzca nombre de usuario y clave para iniciar sesion\n");
-		printf("\n");
-		printf("\n");
-		printf("\n");
-		printf("\n");
-		printf("\n");
+		Banner();    //Llamada a funcion Banner 
+		MenuClave(); // Llamada a MenuClave	                         
+
 		fclave = fopen("clave.txt","r");
 		if(fclave==NULL){
 			printf("Error en la apertura de fichero\n");
@@ -77,24 +73,9 @@ int main(){
 			
     while(1){	
     
-		system("cls");				
-		printf("MENU INICIO");
-		printf("\n");
-		printf("\n");	
-		printf("\n");
-		printf("\n");
-		printf("                                      BIENVENIDO A TU BIBLIOTECA PERSONAL\n");
-		printf("\n");
-		printf("\n");
-		printf("\n");	
-		printf("                                        POR FAVOR SELECCIONA UNA OPCION\n");
-		printf("\n");
-		printf("\n");
-		printf("                                           ***************************\n");
-		printf("                                           *   1.CONSULTA            *\n");
-		printf("                                           *   2.NUEVA ENTRADA       *\n");
-		printf("                                           *   3.SALIR DEL PROGRAMA  *\n");
-		printf("                                           ***************************\n");
+		system("cls");
+		MenuInicio();	//Llamada a funcion del menu inicio			
+
 		do{
 			scanf("%d",&opcionmenuprincipal);
 				if(opcionmenuprincipal<1||opcionmenuprincipal>3)
@@ -103,11 +84,9 @@ int main(){
 				
 			switch(opcionmenuprincipal){
 				
-				case 1:{//CONSULTA
-					
+				case 1:{//CONSULTA					
 					system("cls");
 					printf("MENU INICIO/CONSULTA\n");
-
 
 					fentrada = fopen("entrada.txt","r");
 					if(fentrada==NULL){
@@ -125,37 +104,8 @@ int main(){
 					
 					printf("\nNumero total de archivos encontrados: %d\n",lineas);					
 					
-						printf("\nIntroduzca la opcion de busqueda para filtrado de datos:\n");
-						//printf("Nota: la primera letra en mayuscula y uniendo las palabras con _");
-						printf("\nOpcion 1: buscar por titulo\n");
-						printf("Opcion 2: buscar por autor\n");
-						printf("Opcion 3: buscar por genero\n");
-						printf("Opcion 4: buscar por editorial\n");
-						printf("Opcion 5: buscar por anio\n");
-						printf("Opcion 6: volver al menu inicial\n");					
-						scanf("%d",&parametro);
+					MenuFiltrado(lista, lineas); //Llamada a funcion MenuFiltrado								
 					
-						switch(parametro){							
-								case 1:			                       				
-									ConsultaTitulo(lista, lineas);						
-								break;								
-								case 2:								
-									ConsultaAutor(lista, lineas);               				
-								break;								
-								case 3:								
-									ConsultaGenero(lista, lineas);		                       				
-								break;
-								case 4:
-									ConsultaEditorial(lista, lineas);				                       				
-								break;
-								case 5:
-									ConsultaAnio(lista, lineas);
-								break;
-								case 6:
-								break;								
-						}  //SALIDA SWITCH BUSQUEDA									
-					
-					//getchar();
 					printf("\nPulse una tecla para volver al menu principal\n");
 					getchar();
 					system("cls");
@@ -186,23 +136,19 @@ int main(){
 					break;
 				}	
 				case 3:	//SALIR DEL PROGRAMA
-					system("cls");
-					//getchar();
+					system("cls");					
 					printf("MENU INICIO/SALIR DEL PROGRAMA\n");	
 					printf("HASTA PRONTO!\n");	
-					banner();   		
-					//printf("Pulse una tecla para finalizar\n");
-					//getchar();
-					
+					Banner(); //Llamada a funcion Banner  					
 				return 0;		
-			}//switch menu principal
+			}//cierra switch menu principal
 
-	}//while
+	}//cierra while
 	
-}//main
+}//cierra main
 		
-		
-void banner(){
+//FUNCIONES	
+void Banner(){
 	
 		printf("			------********---**********----*******-----****----**-**-------****-------\n");
 		printf("			------**-------------**------**-------------**-----**----**-----**--------\n");	
@@ -212,6 +158,71 @@ void banner(){
 		printf("			------**-------------**--------------**-----**-----**----**-----**--------\n");
 		printf("			------********-------**-------******-------****----**-**-------****-------\n");
 
+}
+void MenuClave(){
+	
+		printf("\n");
+		printf("\n");
+		printf("\n");	
+		printf("                               Introduzca nombre de usuario y clave para iniciar sesion\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+}
+void MenuInicio(){
+	
+		printf("MENU INICIO");
+		printf("\n");
+		printf("\n");	
+		printf("\n");
+		printf("\n");
+		printf("                                      BIENVENIDO A TU BIBLIOTECA PERSONAL\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");	
+		printf("                                        POR FAVOR SELECCIONA UNA OPCION\n");
+		printf("\n");
+		printf("\n");
+		printf("                                           ***************************\n");
+		printf("                                           *   1.CONSULTA            *\n");
+		printf("                                           *   2.NUEVA ENTRADA       *\n");
+		printf("                                           *   3.SALIR DEL PROGRAMA  *\n");
+		printf("                                           ***************************\n");
+}
+void MenuFiltrado(struct libro lista[], int lineas){
+	
+	int parametro;
+
+						printf("\nIntroduzca la opcion de busqueda para filtrado de datos:\n");
+						printf("\nOpcion 1: buscar por titulo\n");
+						printf("Opcion 2: buscar por autor\n");
+						printf("Opcion 3: buscar por genero\n");
+						printf("Opcion 4: buscar por editorial\n");
+						printf("Opcion 5: buscar por anio\n");
+						printf("Opcion 6: volver al menu inicial\n");					
+						scanf("%d",&parametro);
+					
+						switch(parametro){	//Llamada a funciones de consulta por filtros						
+								case 1:			                       				
+									ConsultaTitulo(lista, lineas);						
+								break;								
+								case 2:								
+									ConsultaAutor(lista, lineas);               				
+								break;								
+								case 3:								
+									ConsultaGenero(lista, lineas);		                       				
+								break;
+								case 4:
+									ConsultaEditorial(lista, lineas);				                       				
+								break;
+								case 5:
+									ConsultaAnio(lista, lineas);
+								break;
+								case 6:
+								break;								
+						}  //SALIDA SWITCH BUSQUEDA		
 }
 void ConsultaTitulo(struct libro lista[], int lineas){
 	
@@ -225,110 +236,104 @@ void ConsultaTitulo(struct libro lista[], int lineas){
 		system("cls");						
 		encontrados=0;
 		for(i=0;i<lineas;i++){									    						
-		resultado=strcmp(titulo, lista[i].titulo);
-		if(resultado==0){								
-		printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
-		encontrados++;
-		}
+			resultado=strcmp(titulo, lista[i].titulo);
+			if(resultado==0){								
+				printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
+			encontrados++;
+			}
 		}									
-		if(encontrados==0)
-			printf("No existen coincidencias con tu busqueda\n");
-		else
-			printf("\nSe han encontrado %d coincidencias\n", encontrados);	
+			if(encontrados==0)
+				printf("No existen coincidencias con tu busqueda\n");
+			else
+				printf("\nSe han encontrado %d coincidencias\n", encontrados);	
 }
 void ConsultaAutor(struct libro lista[], int lineas){
 	
 	int i, encontrados, resultado;
 	char autor[50];
 	
-	printf("Introduzca el autor: ");
+		printf("Introduzca el autor: ");
 		fflush(stdin);
 		gets(autor);
 		printf("\n");
 		system("cls");						
 		encontrados=0;
 		for(i=0;i<lineas;i++){									    						
-		resultado=strcmp(autor, lista[i].autor);
-		if(resultado==0){								
-		printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
+			resultado=strcmp(autor, lista[i].autor);
+			if(resultado==0){								
+				printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
 			encontrados++;
-				}
+			}
 		}									
-		if(encontrados==0)
-		printf("No existen coincidencias con tu busqueda\n");
-		else
-		printf("\nSe han encontrado %d coincidencias\n", encontrados);				
-	
+			if(encontrados==0)
+				printf("No existen coincidencias con tu busqueda\n");
+			else
+				printf("\nSe han encontrado %d coincidencias\n", encontrados);	
 }
 void ConsultaGenero(struct libro lista[], int lineas){
+	
 		int i, encontrados, resultado;
 		char genero[30];
 	
-	printf("Introduzca el genero: ");
-	
-								fflush(stdin);
-								gets(genero);
-								printf("\n");
-								system("cls");						
-								encontrados=0;
-								for(i=0;i<lineas;i++){									    						
-									resultado=strcmp(genero, lista[i].genero);
-									if(resultado==0){								
-										printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
-										encontrados++;
-									}
-								}									
-									if(encontrados==0)
-										printf("No existen coincidencias con tu busqueda\n");
-									else
-										printf("\nSe han encontrado %d coincidencias\n", encontrados);							
-						
-	
+		printf("Introduzca el genero: ");
+		fflush(stdin);
+		gets(genero);
+		printf("\n");
+		system("cls");						
+		encontrados=0;
+		for(i=0;i<lineas;i++){									    						
+			resultado=strcmp(genero, lista[i].genero);
+			if(resultado==0){								
+				printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
+			encontrados++;
+   			}
+		}									
+			if(encontrados==0)
+				printf("No existen coincidencias con tu busqueda\n");
+			else
+				printf("\nSe han encontrado %d coincidencias\n", encontrados);		
 }
 void ConsultaEditorial(struct libro lista[], int lineas){
-	int i, encontrados, resultado;
+	
+		int i, encontrados, resultado;
 		char editorial[30];
-	printf("Introduzca la editorial: ");
-								fflush(stdin);
-								gets(editorial);
-								printf("\n");
-								system("cls");						
-								encontrados=0;
-								for(i=0;i<lineas;i++){									    						
-									resultado=strcmp(editorial, lista[i].editorial);
-									if(resultado==0){								
-										printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
-										encontrados++;
-									}
-								}									
-									if(encontrados==0)
-										printf("No existen coincidencias con tu busqueda\n");
-									else
-										printf("\nSe han encontrado %d coincidencias\n", encontrados);							
-						
-	
-	
-	
+			printf("Introduzca la editorial: ");
+			fflush(stdin);
+			gets(editorial);
+			printf("\n");
+			system("cls");						
+			encontrados=0;
+			for(i=0;i<lineas;i++){									    						
+				resultado=strcmp(editorial, lista[i].editorial);
+				if(resultado==0){								
+					printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
+				encontrados++;
+				}
+			}									
+				if(encontrados==0)
+					printf("No existen coincidencias con tu busqueda\n");
+				else
+					printf("\nSe han encontrado %d coincidencias\n", encontrados);				
 }		
 void ConsultaAnio(struct libro lista[], int lineas){
 	
-	int i, encontrados, resultado;
+		int i, encontrados, resultado;
 		int anio;
-	printf("Introduzca anio de lanzamiento: ");
-									scanf("%d",&anio);
-										system("cls");			
-										encontrados=0;
-										for(i=0;i<lineas;i++){
-											if(anio==lista[i].anio){
-												printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
-												encontrados++;
-											}											
-										}
-											if(encontrados==0)
-												printf("\nNo existen coincidencias con tu busqueda\n");
-											else
-												printf("\nSe han encontrado %d coincidencias\n", encontrados);		
-											getchar();	
-	
+		
+			printf("Introduzca anio de lanzamiento: ");
+			scanf("%d",&anio);
+			system("cls");			
+			encontrados=0;
+			for(i=0;i<lineas;i++){
+				if(anio==lista[i].anio){
+					printf("%s %s %s %s %d %d %d\n", lista[i].titulo, lista[i].autor, lista[i].genero, lista[i].editorial, lista[i].npaginas, lista[i].edicion, lista[i].anio);
+				encontrados++;
+				}											
+			}
+				if(encontrados==0)
+					printf("\nNo existen coincidencias con tu busqueda\n");
+				else
+					printf("\nSe han encontrado %d coincidencias\n", encontrados);		
+				getchar();	
 }
 	
