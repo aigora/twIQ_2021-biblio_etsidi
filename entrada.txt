@@ -14,8 +14,8 @@ Introduccion_a_la_programacion_en_C Diego_Rodriguez Ciencias UPM 198 1 2008
 Una_mente_prodigiosa Sylvia_Nasar Biografia Mondadori 599 1 2001
 Bajo_el_volcan Malcolm_Lowry Novela Seix_Barral 319 1 1985
 Harry_Potter J.K._Rowling Fantasia Bloomsbury_Publishing 426 1 1997
-El_alquimista Paulo_Coelho Novelo Editorial_Planeta 300 1 1991
-El_codigo_da_Vinci Dan Brown Novela Doubleday_Transworld 523 1 2003
+El_alquimista Paulo_Coelho Novela Editorial_Planeta 300 1 1991
+El_codigo_da_Vinci Dan_Brown Novela Doubleday_Transworld 523 1 2003
 El_diario_de_Ana_Frank Anna_Frank Novela Garbo 1232 1 1942
 Parco Jordi_Sierra_I_Fabra Novela Casa_del_Libro 145 1 2006
 El_coleccionista John_Fowles Terror Little 342 1 1989
